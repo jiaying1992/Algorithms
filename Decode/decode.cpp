@@ -1,16 +1,10 @@
 ////////////////////////////////////////////////
-/// COPYRIGHT NOTICE
-/// Copyright (c) 2017, USTC
-/// All rights reserved.
-///
 /// @file Decode.c
 /// @brief 解码程序
-///
-/// @version 1.3
 /// @author: Ying Jia
 /// @date 2017.6.10
-///
 //////////////////////////////////////////////////
+
 //#include "stdafx.h"
 #if defined(_MSC_VER) && defined(_DEBUG)
 #include <stdlib.h>
@@ -28,7 +22,6 @@ char m_acTable[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '\n' };   /// 01比特流转换成字符的查询表
 /**
 *
-* @author: Ying Jia
 * @param
 * @return 输出解码成功或者失败，成功则输出字符，失败则输出失败原因
 * @note 该版本中输入图像矩阵大小为600*600，若有不同，请修改头文件中SIZE1和SIZE2的大小
@@ -212,7 +205,6 @@ FREE_MEM:
 
 /**
 * 解码程序
-* @author: Ying Jia
 * @param[in] aiCenterblock[][] 取输入图像的中心方块
 * @param[in] aiInimage[][]  输入图像
 * @param[in] iInimage_height 输入图像的高
@@ -380,7 +372,6 @@ void fnDotDecode(int **aiCenterblock, int **aiInimage, int iInimage_height, int 
 
 /**
 * 求黑点数量points、中心pointsy\pointsx、面积pointsw、排序pointsind
-* @author: Ying Jia
 * @param[in] aiCenterblock[][] 取输入图像的中心方块
 * @param[in] iThreshold 黑白划分的阈值
 * @param[in] adPointsy[] 存储每个黑点的y坐标值
@@ -459,7 +450,6 @@ void fnPickSortDots(int **aiCenterblock, const int iThreshold, double *adPointsy
 
 /**
 * 求第(i,j)个点的横纵坐标(y,x)和面积
-* @author: Ying Jia
 * @param[in] aiCenterblock[][] 取输入图像的中心方块
 * @param[in] i 所求点的索引
 * @param[in] j 所求点的索引
@@ -564,7 +554,6 @@ void fnConnects(int **aiCenterblock, int i, int j, const int iThreshold, double 
 
 /**
 * 每点求下方最临近点，计算偏移角度和距离
-* @author: Ying Jia
 * @param[in] adPointsy[] 黑点的纵坐标
 * @param[in] adPointsx[] 黑点的横坐标
 * @param[in] aiPointsind[] 黑点按照纵坐标递增排序
@@ -605,7 +594,6 @@ void fnNearAng(const double *adPointsy, const double *adPointsx, const int *aiPo
 
 /**
 * 按顺序读取矩阵
-* @author: Ying Jia
 * @param[in] aiMatr[][] 填充得到的数据矩阵
 * @param[in] iSty 起始点的纵坐标
 * @param[in] iStx 起始点的横坐标
@@ -675,7 +663,6 @@ void fnUnCoverSeed(int **aiMatr,int iSty,int iStx, int *aiSecmsg)
 
 /**
 * 以最集中的作为倾斜角、间隔（编码矩阵中每点的大小）
-* @author: Ying Jia
 * @param[in] adDis[] 每个黑点与其下方最邻近黑点之间的距离
 * @param[in] adAng[] 每个黑点与其下方最邻近黑点之间的偏移角度
 * @param[in] iPoints 黑点数量
@@ -889,7 +876,6 @@ void fnAngScale(const double *adDis,const double *adAng,int iPoints, int *iErrco
 
 /**
 * 求角度之间距离
-* @author: Ying Jia
 * @param[in] dInput1 输入角度
 * @param[in] dInput2 输入角度
 * @return dOutput 两个角度之间距离
@@ -910,7 +896,6 @@ double fnDistant(double dInput1, double dInput2)
 
 /**
 * 寻找矩阵起始标志点及方向，旋转矩阵到正方向
-* @author: Ying Jia
 * @param[in] aiMatr[][] 填充得到的数据矩阵
 * @param[in] iSty 矩阵起始标志点的纵坐标
 * @param[in] iStx 矩阵起始标志点的横坐标
@@ -1038,7 +1023,6 @@ void fnFindStart(int **aiMatr, int *iSty, int *iStx)
 
 /**
 * 求模，结果是正数
-* @author: Ying Jia
 * @param[in] iInput1 被求模数
 * @param[in] iInput2 模数
 * @return iOutput 返回求模的结果
@@ -1079,7 +1063,6 @@ double fnRound(double dInput)
 
 /**
 * 01比特流转换成字符
-* @author: Ying Jia
 * @param[in] aiSecmsg[] 01比特流
 * @param[in] pcMsg_char[] 输出字符
 * @param[in] iErrcode 错误标志
@@ -1121,7 +1104,6 @@ char *fnBit2char(int *aiSecmsg,char *pcMsg_char, int *iErrcode)
 
 /**
 * CRC校验码生成函数
-* @author: Ying Jia
 * @param[in] aiMsg_bit[] 待加密的比特信息，由str2bin函数生成
 * @param[in] iSize 信息比特流的长度
 * @return iCrc 32位的crc校验码，以十进制的形式返回
@@ -1159,7 +1141,6 @@ int fnCrc32Decode(const int * aiMsg_bit, int iSize)
 
 /**
 * 将十进制的数转换成二进制比特流，生成crc校验码函数的补充函数
-* @author: Ying Jia
 * @param[in] iNum 待转换的数，32位的crc校验码
 * @param[in] aiCrc[] 存储转换结果
 * @param[in] i 函数内部数组索引
