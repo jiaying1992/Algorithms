@@ -1,15 +1,8 @@
 ////////////////////////////////////////////////
-/// COPYRIGHT NOTICE
-/// Copyright (c) 2017,USTC
-/// All rights reserved.
-///
 /// @file Decode.h
 /// @brief Decode.c文件的头文件
-///
-/// @version 1.3
 /// @author: Ying Jia
 /// @date 2017.6.10
-///
 ///////////////////////////////////////////////
 #ifndef DECODE_H
 #define DECODE_H
